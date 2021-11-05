@@ -2,6 +2,20 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import Character from './components/Character';
+import styled from 'styled-components';
+
+const MainDiv = styled.div`
+  border: dashed;
+  padding: 2%;
+`
+
+const H1Border = styled.h1`
+  font-weight: bold;
+  font-size: 35px;
+  padding: 2%;
+  color: orangered;
+  opacity: .65;
+`
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -22,14 +36,14 @@ const App = () => {
   }, [])
 
   return (
-    <div className="App">
-      <h1 className="Header">Characters</h1>
+    <MainDiv className="App">
+      <H1Border className="Header">Characters</H1Border>
       {
       starData.map((star) => (
-        <Character name={star.name} />
+        <Character name={star.name} key={star.created}/>
       ))
       }
-    </div>
+    </MainDiv>
   );
 }
 
